@@ -1,0 +1,9 @@
+Project 1 - Algorithm Performance Results
+========================================
+N		Time (seconds)
+----------------------------------------
+1.000e+03	7.909839e-07
+1.000e+06	1.999957e-06
+1.000e+09	3.084016e-06
+----------------------------------------
+Note: Time measurements are in seconds using scientific notation.

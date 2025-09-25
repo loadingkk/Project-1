@@ -2,29 +2,41 @@
 
 import time
 
-def kernel(n):
+def Option_0(n):
     Sum = 0
     j = 2
     while j < n:
         k = j
         while k < n:
-            # 模拟常数工作；访问数组替换为简单加法即可
             Sum += 1
             k = k * k
         j = 2 * j
     return Sum
 
-def measure(n, trials=5):
-    # 取最小/中位数可减小波动；这里用最小值
+def Time_Measure(n, trials=5):
+
     best = float('inf')
     for _ in range(trials):
         t0 = time.perf_counter()
-        kernel(n)
+        Option_0(n)
         t1 = time.perf_counter()
         best = min(best, t1 - t0)
     return best
 
-Ns = [10**k for k in range(3, 9)]  # 1e3 ... 1e8，可按机器性能调整
-data = [(n, measure(n)) for n in Ns]
+Ns = [10**k for k in (3,6,9)]  # From 1,000 to 100,000,000
+data = [(n, Time_Measure(n)) for n in Ns]
 for n,t in data:
     print(n, t)
+
+# 将结果记录到txt文件中，使用科学计数法
+with open('results.txt', 'w') as f:
+    f.write("Project 1 - Algorithm Performance Results\n")
+    f.write("========================================\n")
+    f.write("N\t\tTime (seconds)\n")
+    f.write("----------------------------------------\n")
+    for n, t in data:
+        f.write(f"{n:.3e}\t{t:.6e}\n")
+    f.write("----------------------------------------\n")
+    f.write("Note: Time measurements are in seconds using scientific notation.\n")
+
+print("\nResults have been saved to 'results.txt' in scientific notation format.")
