@@ -1,17 +1,27 @@
-# Compare theoretical and experimental algorithm performance
+#!/usr/bin/env python3
+"""
+Compare theoretical and experimental algorithm performance
+
+This module generates comparison graphs and analyzes performance data.
+
+Author: Fan
+Date: 2025-09-26
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 
 def read_results_data(filename):
     """
-    Read data from results file
+    Read data from results file.
     
-    Parameters:
-    filename: File name
+    Args:
+        filename (str): File name to read data from
     
     Returns:
-    n_values: List of N values
-    time_values: List of time values
+        tuple: A tuple containing (n_values, time_values) where:
+            - n_values (list): List of N values
+            - time_values (list): List of time values
     """
     n_values = []
     time_values = []
@@ -41,7 +51,13 @@ def read_results_data(filename):
 
 def plot_comparison():
     """
-    Plot comparison chart of experimental and theoretical times
+    Plot comparison chart of experimental and theoretical times.
+    
+    Creates a log-log scale plot comparing experimental vs theoretical performance data.
+    Saves the plot as 'algorithm_performance_comparison.png' and displays comparison statistics.
+    
+    Returns:
+        None
     """
     # Read experimental data
     exp_n, exp_time = read_results_data('experimental_results.txt')

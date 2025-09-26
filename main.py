@@ -1,39 +1,54 @@
-# Project 1 
+#!/usr/bin/env python3
+"""
+Project 1 - Algorithm Performance Analysis
+
+Main module for algorithm performance analysis and comparison.
+
+Author: Fan
+Date: 2025-09-26
+"""
 
 import time
-from Theoretical_Cal import calculate_C_from_results
-from Graph import plot_comparison
+from theoretical_cal import calculate_c_from_results
+from graph import plot_comparison
 
-def Option_0(n):
+def option_0(n):
     """
-    Algorithm implementation - Option 0
-
+    Algorithm implementation - Option 0.
+    
+    Implements a nested loop algorithm with specific complexity characteristics.
+    
+    Args:
+        n (int): Input size for the algorithm
+    
+    Returns:
+        int: Sum calculated by the algorithm
     """
-    Sum = 0
+    sum_value = 0
     j = 2  
     while j < n:
         k = j
         while k < n:
-            Sum += 1
+            sum_value += 1
             k = k * k
         j = 2 * j
-    return Sum
+    return sum_value
 
-def Time_Measure(n, trials=5):
+def time_measure(n, trials=5):
     """
-    Measure the execution time of Option_0 algorithm
+    Measure the execution time of option_0 algorithm.
     
-    Parameters:
-    n: Input size
-    trials: Number of trials to run (default: 5)
+    Args:
+        n (int): Input size for the algorithm
+        trials (int): Number of trials to run (default: 5)
     
     Returns:
-    avg_time: Average time after removing outliers
+        float: Average execution time after removing outliers
     """
     times = []
     for _ in range(trials):
         t0 = time.perf_counter()
-        Option_0(n)
+        option_0(n)
         t1 = time.perf_counter()
         times.append(t1 - t0)
 
@@ -45,18 +60,24 @@ def Time_Measure(n, trials=5):
 
 def run_performance_analysis():
     """
-    Run performance analysis and save results to file
+    Run performance analysis and save results to file.
+    
+    Executes the algorithm with various input sizes, measures execution times,
+    and saves results to 'experimental_results.txt'.
+    
+    Returns:
+        list: List of (n, time) tuples containing performance data
     """   
     # Define n values
-    Ns = [10**k for k in range(1, 14, 2)]  # 10¹, 10³, 10⁵, ..., 10¹³
+    n_values = [10**k for k in range(1, 14, 2)]  # 10¹, 10³, 10⁵, ..., 10¹³
     
-    print(f"\ninput sizes: {len(Ns)} , N values: {[f'{n:,.0f}' for n in Ns]}")
+    print(f"\ninput sizes: {len(n_values)} , N values: {[f'{n:,.0f}' for n in n_values]}")
     
     # Measure performance
     data = []
-    for i, n in enumerate(Ns, 1):
-        print(f"\nTest {i}/{len(Ns)}: N = {n:,}")
-        t = Time_Measure(n)
+    for i, n in enumerate(n_values, 1):
+        print(f"\nTest {i}/{len(n_values)}: N = {n:,}")
+        t = time_measure(n)
         data.append((n, t))
         print(f"Time: {t:.6e} seconds")
     
@@ -72,10 +93,13 @@ def run_performance_analysis():
 
 def save_results_to_file(data):
     """
-    Save performance results to experimental_results.txt file
+    Save performance results to experimental_results.txt file.
     
-    Parameters:
-    data: List of (n, time) tuples
+    Args:
+        data (list): List of (n, time) tuples containing performance measurements
+    
+    Returns:
+        None
     """
     with open('experimental_results.txt', 'w') as f:
         f.write("Project 1 - Algorithm Performance Results\n")
@@ -89,16 +113,19 @@ def save_results_to_file(data):
     
     print(f"\nResults have been saved to 'experimental_results.txt'.")
 
-def run_theoretical_analysis(data_row_index=0):
+def run_theoretical_analysis(c_calculation_row=0):
     """
-    Run theoretical analysis to calculate constant C and generate theoretical times
+    Run theoretical analysis to calculate constant C and generate theoretical times.
     
-    Parameters:
-    data_row_index: Index of data row to use for calculating C (default: 0 for first row)
+    Args:
+        c_calculation_row (int): Index of data row to use for calculating C (default: 0)
+    
+    Returns:
+        None
     """
     try:
-        C = calculate_C_from_results(data_row_index)
-        if C is not None:
+        c_value = calculate_c_from_results(c_calculation_row)
+        if c_value is not None:
             print("Theoretical analysis completed successfully!")
         else:
             print("Error: Failed to calculate constant C")
@@ -107,7 +134,12 @@ def run_theoretical_analysis(data_row_index=0):
 
 def generate_comparison_graph():
     """
-    Generate comparison graph between experimental and theoretical results
+    Generate comparison graph between experimental and theoretical results.
+    
+    Creates and displays a visual comparison of experimental vs theoretical performance data.
+    
+    Returns:
+        None
     """
     try:
         plot_comparison()
@@ -116,11 +148,15 @@ def generate_comparison_graph():
 
 def main():
     """
-    Main function - Complete analysis pipeline
+    Main function - Complete analysis pipeline.
+    
     Executes three-step analysis:
     1. Measure algorithm performance experimentally
     2. Calculate theoretical times using constant C
     3. Generate comparison graph
+    
+    Returns:
+        None
     """
     print("Starting complete algorithm analysis pipeline...\n")
     
