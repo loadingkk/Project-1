@@ -4,7 +4,7 @@ Minimal Unit Tests - Core Functionality Only
 
 Unit tests for core algorithm functionality.
 
-Author: Fan
+Author: Zhentao Fan
 Date: 2025-09-26
 Usage: python mini_test.py
 """

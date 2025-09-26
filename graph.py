@@ -4,7 +4,7 @@ Compare theoretical and experimental algorithm performance
 
 This module generates comparison graphs and analyzes performance data.
 
-Author: Fan
+Author: Zhentao Fan
 Date: 2025-09-26
 """
 

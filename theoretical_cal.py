@@ -4,7 +4,7 @@ Theoretical complexity analysis: T(n) = C * (log n * log log n)
 
 This module calculates theoretical performance times based on experimental data.
 
-Author: Fan
+Author: Zhentao Fan
 Date: 2025-09-26
 """
 

@@ -4,7 +4,7 @@ Project 1 - Algorithm Performance Analysis
 
 Main module for algorithm performance analysis and comparison.
 
-Author: Fan
+Author: Zhentao Fan
 Date: 2025-09-26
 """
 
