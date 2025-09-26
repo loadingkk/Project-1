@@ -1,4 +1,4 @@
-#Compare theoretical and experimental times
+# Compare theoretical and experimental algorithm performance
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -44,7 +44,7 @@ def plot_comparison():
     Plot comparison chart of experimental and theoretical times
     """
     # Read experimental data
-    exp_n, exp_time = read_results_data('results.txt')
+    exp_n, exp_time = read_results_data('experimental_results.txt')
     
     # Read theoretical data
     theo_n, theo_time = read_results_data('theoretical_results.txt')
@@ -65,9 +65,6 @@ def plot_comparison():
     plt.ylabel('Time (seconds) - Log Scale', fontsize=12)
     plt.title('Algorithm Performance Comparison: Experimental vs Theoretical Time\n(Log-Log Scale)', fontsize=14)
     
-    # Explicitly set log scale for both axes (redundant with loglog but for clarity)
-    plt.xscale('log')
-    plt.yscale('log')
     
     # Improve grid for log scale
     plt.grid(True, which='major', alpha=0.5, linestyle='-')
