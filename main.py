@@ -66,7 +66,7 @@ def run_performance_analysis():
     and saves results to 'experimental_results.txt'.
     
     Returns:
-        list: List of (n, time) tuples containing performance data
+        None
     """   
     # Define n values
     n_values = [10**k for k in range(1, 14, 2)]  # 10¹, 10³, 10⁵, ..., 10¹³
@@ -88,8 +88,6 @@ def run_performance_analysis():
     
     # Save results to file
     save_results_to_file(data)
-    
-    return data
 
 def save_results_to_file(data):
     """
@@ -161,7 +159,7 @@ def main():
     print("Starting complete algorithm analysis pipeline...\n")
     
     # Run experimental performance analysis
-    data = run_performance_analysis()
+    run_performance_analysis()
     
     # Calculate theoretical predictions
     run_theoretical_analysis(3)
